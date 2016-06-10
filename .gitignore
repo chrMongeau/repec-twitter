@@ -1,6 +1,6 @@
 background/
 data/
-repec-network/
+repec-twitter-network/
 keys.txt
 network.graphml
 *.swp
