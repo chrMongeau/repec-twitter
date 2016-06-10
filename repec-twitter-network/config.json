@@ -8,7 +8,7 @@
     "text": ""
   },
   "text": {
-    "more": "Each node represents an <a href='https://ideas.repec.org/i/etwitter.html'>economist registered on RePEc and on Twitter</a>. Edges (links) show whether a user follows or is followed by another user. Colors represent the user's main research area, based on an aggregation of their main <a href='https://ideas.repec.org/n/'>NEP field</a>. In order to keep things manageable, the 95 NEP fields were aggregated into 15 fields. The match between NEP fields and groups is defined in XXX The size of nodes reflects user's centrality (PageRank) in the network.",
+    "more": "Each node represents an <a href='https://ideas.repec.org/i/etwitter.html'>economist registered on RePEc and on Twitter</a>. Edges (links) show whether a user follows or is followed by another user. Colors represent the user's main research area, based on an aggregation of their main <a href='https://ideas.repec.org/n/'>NEP field</a>. In order to keep things manageable, the 95 NEP fields were aggregated into 15 fields. The match between NEP fields and groups is defined in <a href='https://github.com/chrMongeau/repec-twitter/blob/master/NEP.csv'>https://github.com/chrMongeau/repec-twitter/blob/master/NEP.csv</a>. The size of nodes reflects user's centrality (PageRank) in the network.<p>More info here: <a href='https://github.com/chrMongeau/repec-twitter'>https://github.com/chrMongeau/repec-twitter</a>.",
     "intro": "Network of <a href='https://ideas.repec.org/i/etwitter.html'>RePEc economists on Twitter</a>",
     "title": ""
   },
@@ -43,7 +43,7 @@
       "maxEdgeSize": 1.1,
       "minEdgeSize": 0.2,
       "minNodeSize": 1,
-      "maxNodeSize": 18
+      "maxNodeSize": 16
     },
     "mouseProperties": {
       "maxRatio": 20,

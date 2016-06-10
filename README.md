@@ -1,12 +1,11 @@
 # RePEc economists on Twitter
 
-This repository has two scripts:
+This repository has two (main) R scripts:
 
 * list.R
 * network.R
 
-While the scripts are in the public domain (see the UNLICENCE file),
-attribution would be appreciated (not required!).
+All is [CC-BY-NC-SA](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## list.R
 
@@ -27,7 +26,7 @@ Specifically, it extracts the following information:
 
 * name;
 * NEP (New Economic Papers) fields (see below);
-* main NEP field (see below);
+* main NEP field group (see below);
 * affiliation (see below);
 * number of articles;
 * number of papers;
@@ -68,7 +67,8 @@ was to assign a NA to the field, which doesn't seems a wise thing to do).
 
 ### Affiliation
 
-XXX
+Affiliation is the one with the highest percentage. If no percentage is
+reported, it is the first one.
 
 ### Network plotting
 
@@ -79,9 +79,9 @@ manual tweaking is done there. These are the steps:
   (Color) > Attribute > field (then choose colours) > Apply];
 * resize nodes so that they reflect the number of followers [Node (Size) >
   attribute > In-Degree (Min size: 20; Max size: 100) > Apply];
-* choose a layout [Layout > OpenOrd (Liquid: 30%; Expansion: 20%; Cooldown:
-  20%; Crunch: 20%; Simmer: 10%; Edge Cut: 0.9; Num Iterations: 1000; Fixed
-  time=0.2; Random seed: 123) > Run]
+* choose a layout [for instance, Layout > OpenOrd (Liquid: 30%; Expansion:
+  20%; Cooldown: 20%; Crunch: 20%; Simmer: 10%; Edge Cut: 0.9; Num
+  Iterations: 1000; Fixed time=0.2; Random seed: 123) > Run]
 * adjust overlap nodes [Layout > Noverlap > Run]
 * Save it [File > Export > Sigma.js template]
 
@@ -93,17 +93,12 @@ In the Sigma.js Export dialog, the following items were filled:
 * Features: "Include search?" and "Group edges by direction?"
 * Hover behavior: Dim;
 * Group selector: field;
-* Image attribute: XXX;
-* XXX
+* Image attribute: pic;
+* Description, long description, etc.
 
-Finally, some tweaks were done on XXX:
-
-* XXX
-* XXX
+Finally, some tweaks were done for a better visualization.
 
 ### Where is the data?
-
-The weighted network is available here XXX.
 
 Initially I though about sharing the data from Twitter and RePEC, but I
 reconsidered this idea because I don't feel confortable in sharing personal
