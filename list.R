@@ -95,6 +95,15 @@ if ( error == FALSE ) {
 	#	'&screen_name=', 'SomeUser') %>%
 	#	POST(config(token = twitter_token))
 
+	new_list_info <- paste0(root,
+			'show.json',
+			'?slug=', slug,
+			'&owner_screen_name=', owner) %>%
+		GET(config(token = twitter_token)) %>%
+		content
+
+	new_count <- new_list_info$member_count
+
 	desc <- paste0('Unofficial list of economists on RePEc - ',
 			'https://ideas.repec.org/i/etwitter.html') %>%
 		url_escape
@@ -112,7 +121,8 @@ if ( error == FALSE ) {
 
 	updates <- paste(length(to_add), "#RePEc #economists have joined",
 			"https://ideas.repec.org/i/etwitter.html from", last_update, 'to',
-			Sys.Date(), 'List: https://twitter.com/chrMongeau/lists/repec-twitter') %>%
+			Sys.Date(), 'Now', new_count,
+			'in list: https://twitter.com/chrMongeau/lists/repec-twitter') %>%
 		url_escape
 
 	reply_update <-	paste0('https://api.twitter.com/1.1/statuses/update.json',
