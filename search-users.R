@@ -2,19 +2,18 @@ library('httr')
 library('xml2')
 library('magrittr')
 
+setwd('R:/')
+
+source('keys.txt')
 
 epoch <- function(x) {
 	return(as.numeric(format(x, format='%s')))
 }
 
 #### OAuth key and secret #####
-myapp <- oauth_app('twitter',
-	key = 'iwIqHoBozVusJ8jucAeXAtrML',
-	secret = 'qy0ZWvFXTTEqjlMZW03SRGFdKotn3rSiyh7dhz3jtVIdO7gEj4'
-)
-
-twitter_token <- oauth1.0_token(oauth_endpoints('twitter'), myapp)
-
+twitter_token <-
+	oauth_app('twitter', key = oauth['key'], secret = oauth['secret']) %>%
+	oauth1.0_token(oauth_endpoints('twitter'), .)
 
 GET_content <- function(x) {
 	return(content(GET(x, config(token = twitter_token))))
