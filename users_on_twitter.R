@@ -36,7 +36,6 @@ twitter_users_on_ideas <- 'https://ideas.repec.org/i/etwitter.html' %>%
 on_twitter <- all_in_page %in% twitter_users_on_ideas
 
 cat('There are', sum(on_twitter), 'users on Twitter out of',
-	length(all_in_page), 'in\n', page, '\nThey are:')
-
-all_in_page[on_twitter]
+	length(all_in_page), 'in\n', page, '\nThey are:\n',
+	sub('$', '\n', all_in_page[on_twitter]))
 
