@@ -19,7 +19,18 @@ GET_content <- function(x) {
 	return(content(GET(x, config(token = twitter_token))))
 }
 
+tw_sleep <- function() {
+	rate_limit <-
+		paste0('https://api.twitter.com/1.1/', 'application/rate_limit_status.json?resources=search') %>%
+		GET_content
 
+	x <- rate_limit$resources$search$`/search/tweets`$reset
+	to_sleep <- x - epoch(Sys.time()) + 10
+
+	print(paste('Sleeping until', format(Sys.time()+to_sleep, '%H:%M:%S')))
+	flush.console()
+	Sys.sleep(to_sleep)
+}
 
 TOP5 <- 'https://ideas.repec.org/top/top.person.all10.html' %>%
 	read_html %>%
@@ -29,6 +40,8 @@ TOP5 <- 'https://ideas.repec.org/top/top.person.all10.html' %>%
 	iconv(from='utf8', to='utf8') %>%
 	trimws
 
+TOP5 <- TOP5[!grepl('[^\\w\\.\\)]$', TOP5, perl=T)]
+
 TOP <- 'https://ideas.repec.org/top/top.person.all10.html' %>%
 	read_html %>%
 	xml_find_all('//a[contains(@href, "/e/") or contains(@href ,"/f/")]/text()') %>%
@@ -37,25 +50,21 @@ TOP <- 'https://ideas.repec.org/top/top.person.all10.html' %>%
 	iconv(from='utf8', to='utf8') %>%
 	trimws
 
-rate_limit <- 'https://api.twitter.com/1.1/application/rate_limit_status.json?resources=users' %>%
-	GET_content
-
-rate_limit$resources$users$`/users/search`$remaining
-
-
-
-x <- rate_limit$resources$users$`/users/search`$reset
-to_sleep <- x - epoch(Sys.time()) + 10
-print(paste('Sleeping until', format(Sys.time()+to_sleep, '%H:%M:%S')))
+TOP <- TOP[!grepl('[^\\w\\.\\)]$', TOP, perl=T)]
 
 # TODO: common names requires iterating through various pages
 # TODO: remove "Jr." etc.
 
+# XXX: amartya sen -> https://twitter.com/NotAmartyaSen (parody)
+
 users <- list()
-for ( i in 2300:2478 ) {
+#for ( i in seq_along(TOP5) ) {
+for ( i in 369:2000 ) {
 	print(i) ; flush.console()
 
-	user <- TOP[i] %>%
+	other_error <- FALSE
+
+	user <- TOP5[i] %>%
 		gsub(' ', '%20', .)
 
 	a <- paste0('https://api.twitter.com/1.1/users/search.json?q=',
@@ -63,35 +72,53 @@ for ( i in 2300:2478 ) {
 		GET_content
 
 	if ( !is.null(a$errors) ) {
-		if ( a$errors[[1]]$code == 88 ) stop()
+		if ( a$errors[[1]]$code == 88 ) {
+			print('API ERROR: LIMIT') ; flush.console()
+
+			while ( !is.null(a$errors) ) {
+
+				tw_sleep()
+
+				a <- paste0('https://api.twitter.com/1.1/users/search.json?q=',
+					user, '&page=1&count=20') %>%
+					GET_content
+			}
+		} else {
+			print('API ERROR: OTHER') ; flush.console()
+			other_error <- TRUE
+		}
 	}
 
-	found <- grep('econ', sapply(a, '[[', 'description'), ignore.case=TRUE)
-
-	if ( length(found) > 0 ) {
-		users[[i]] <- sapply(found, function(x) a[[x]]$screen_name)
-		print(-1) ; flush.console()
+	if ( other_error ) {
+		users[[i]] <- NA
 	} else {
-		 # Try removing middle name initials
-		user <- TOP[i] %>%
-			sub(' [A-Z]\\. ', ' ', .) %>%
-			gsub(' ', '%20', .)
-		
-			found <- grep('econ', sapply(a, '[[', 'description'), ignore.case=TRUE)
+		found <- grep('econ', sapply(a, '[[', 'description'), ignore.case=TRUE)
 
 		if ( length(found) > 0 ) {
 			users[[i]] <- sapply(found, function(x) a[[x]]$screen_name)
-			print(-2) ; flush.console()
+			print(-1) ; flush.console()
 		} else {
-			# Search in last tweet
-			found <- grep('econ', sapply(a, function(x) x[['status']][['text']]), ignore.case=TRUE)
+			 # Try removing middle name initials
+			user <- TOP5[i] %>%
+				sub(' [A-Z]\\. ', ' ', .) %>%
+				gsub(' ', '%20', .)
 			
+				found <- grep('econ', sapply(a, '[[', 'description'), ignore.case=TRUE)
+
 			if ( length(found) > 0 ) {
 				users[[i]] <- sapply(found, function(x) a[[x]]$screen_name)
-				print(-3) ; flush.console()
+				print(-2) ; flush.console()
 			} else {
-				# Add search in tweets
-				users[[i]] <- NA
+				# Search in last tweet
+				found <- grep('econ', sapply(a, function(x) x[['status']][['text']]), ignore.case=TRUE)
+				
+				if ( length(found) > 0 ) {
+					users[[i]] <- sapply(found, function(x) a[[x]]$screen_name)
+					print(-3) ; flush.console()
+				} else {
+					# Add search in tweets
+					users[[i]] <- NA
+				}
 			}
 		}
 	}

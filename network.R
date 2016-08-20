@@ -46,6 +46,7 @@ tw_sleep <- function() {
 	to_sleep <- x - epoch(Sys.time()) + 10
 
 	print(paste('Sleeping until', format(Sys.time()+to_sleep, '%H:%M:%S')))
+	flush.console()
 	Sys.sleep(to_sleep)
 }
 
