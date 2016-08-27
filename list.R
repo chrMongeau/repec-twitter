@@ -1,3 +1,17 @@
+#
+#
+#
+# An updated version of this script can be found at:
+#
+# https://github.com/chrMongeau/repec-twitter/blob/master/list.R
+#
+#
+#
+
+
+
+
+
 # List of RePEc economists on Twitter:
 # https://ideas.repec.org/i/etwitter.html
 # https://twitter.com/chrMongeau/lists/repec-twitter
