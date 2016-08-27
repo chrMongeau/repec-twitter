@@ -2,6 +2,8 @@ library('httr')
 library('xml2')
 library('magrittr')
 
+page <- 'https://ideas.repec.org/top/top.women.html'
+
 setwd('R:/')
 
 source('keys.txt')
@@ -32,25 +34,25 @@ tw_sleep <- function() {
 	Sys.sleep(to_sleep)
 }
 
-TOP5 <- 'https://ideas.repec.org/top/top.person.all10.html' %>%
+# TOP5 <- 'https://ideas.repec.org/top/top.person.all10.html' %>%
+# 	read_html %>%
+# 	xml_find_all('//table[@class="shorttop"]//td/a[@href]/text()') %>%
+# 	as.character %>%
+# 	gsub('  *', ' ', .) %>%
+# 	iconv(from='utf8', to='utf8') %>%
+# 	trimws
+# 
+# TOP5 <- TOP5[!grepl('[^\\w\\.\\)]$', TOP5, perl=T)]
+
+TOP <- page %>%
 	read_html %>%
-	xml_find_all('//table[@class="shorttop"]//td/a[@href]/text()') %>%
+	xml_find_all('//a[starts-with(@href, "/e/") or starts-with(@href ,"/f/")]/text()') %>%
 	as.character %>%
 	gsub('  *', ' ', .) %>%
 	iconv(from='utf8', to='utf8') %>%
 	trimws
 
-TOP5 <- TOP5[!grepl('[^\\w\\.\\)]$', TOP5, perl=T)]
-
-TOP <- 'https://ideas.repec.org/top/top.person.all10.html' %>%
-	read_html %>%
-	xml_find_all('//a[contains(@href, "/e/") or contains(@href ,"/f/")]/text()') %>%
-	as.character %>%
-	gsub('  *', ' ', .) %>%
-	iconv(from='utf8', to='utf8') %>%
-	trimws
-
-TOP <- TOP[!grepl('[^\\w\\.\\)]$', TOP, perl=T)]
+TOP <- TOP[!grepl('[^\\w\\.\\)]$', TOP, perl=TRUE)]
 
 # TODO: common names requires iterating through various pages
 # TODO: remove "Jr." etc.
@@ -59,12 +61,12 @@ TOP <- TOP[!grepl('[^\\w\\.\\)]$', TOP, perl=T)]
 
 users <- list()
 #for ( i in seq_along(TOP5) ) {
-for ( i in 369:2000 ) {
+for ( i in seq_along(TOP) ) {
 	print(i) ; flush.console()
 
 	other_error <- FALSE
 
-	user <- TOP5[i] %>%
+	user <- TOP[i] %>%
 		gsub(' ', '%20', .)
 
 	a <- paste0('https://api.twitter.com/1.1/users/search.json?q=',
@@ -92,25 +94,25 @@ for ( i in 369:2000 ) {
 	if ( other_error ) {
 		users[[i]] <- NA
 	} else {
-		found <- grep('econ', sapply(a, '[[', 'description'), ignore.case=TRUE)
+		found <- grep('\\becon', sapply(a, '[[', 'description'), ignore.case=TRUE)
 
 		if ( length(found) > 0 ) {
 			users[[i]] <- sapply(found, function(x) a[[x]]$screen_name)
 			print(-1) ; flush.console()
 		} else {
 			 # Try removing middle name initials
-			user <- TOP5[i] %>%
+			user <- TOP[i] %>%
 				sub(' [A-Z]\\. ', ' ', .) %>%
 				gsub(' ', '%20', .)
 			
-				found <- grep('econ', sapply(a, '[[', 'description'), ignore.case=TRUE)
+				found <- grep('\\becon', sapply(a, '[[', 'description'), ignore.case=TRUE)
 
 			if ( length(found) > 0 ) {
 				users[[i]] <- sapply(found, function(x) a[[x]]$screen_name)
 				print(-2) ; flush.console()
 			} else {
 				# Search in last tweet
-				found <- grep('econ', sapply(a, function(x) x[['status']][['text']]), ignore.case=TRUE)
+				found <- grep('\\becon', sapply(a, function(x) x[['status']][['text']]), ignore.case=TRUE)
 				
 				if ( length(found) > 0 ) {
 					users[[i]] <- sapply(found, function(x) a[[x]]$screen_name)
