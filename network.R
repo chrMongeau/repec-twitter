@@ -213,8 +213,9 @@ affiliation_from_page <- function(pag) {
 fields_from_page <- function(pag) {
 	fields <-
 		pag %>%
-		xml_find_all('//div[@id="author-nep-fields"]//li/text()[1]') %>%
-		as.character %>%
+		xml_find_all('//div[@id="author-nep-fields"]//li') %>%
+		sub('<li><a href="/n/nep-.../">NEP-...</a>(: .* \\([0-9]+)\\) <a href=.*', '\\1', .) %>%
+		gsub('<.?b>', '', .) %>%
 		strsplit('\\(') %>%
 		asDataFrame
 
@@ -227,7 +228,6 @@ fields_from_page <- function(pag) {
 			sub('  *$', '', .)
 
 		fields[,2] %<>%
-			sub('\\)  *', '', .) %>%
 			as.numeric
 
 		fields$field <-
