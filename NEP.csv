@@ -1,96 +1,96 @@
-field,group,description
-ALL,all,"All new papers 853 reports with 304,061 papers, edited by Laura ?tef?nescu. Subscribe: email, RSS or Twitter."
-BAN,bank,"Banking 516 reports with 7,893 papers, edited by Christian Calmès. Subscribe: email, RSS or Twitter."
-CBA,bank,"Central Banking 658 reports with 16,991 papers, edited by Maria Semenova. Subscribe: email, RSS or Twitter."
-MON,bank,"Monetary Economics 818 reports with 15,345 papers, edited by Bernd Hayo. Subscribe: email, RSS or Twitter."
-ACC,business,"Accounting & Auditing 612 reports with 4,265 papers, edited by Alexander Harin. Subscribe: email, RSS or Twitter."
-BEC,business,"Business Economics 600 reports with 10,235 papers, edited by Vasileios Bougioukos. Subscribe: email, RSS or Twitter."
-CSE,business,"Economics of Strategic Management 536 reports with 8,165 papers, edited by João José de Matos Ferreira. Subscribe: email, RSS or Twitter."
-ENT,business,"Entrepreneurship 690 reports with 6,426 papers, edited by Marcus Dejardin. Subscribe: email, RSS or Twitter."
-HIS,business,"Business, Economic & Financial History 726 reports with 10,979 papers, edited by Bernardo Bátiz-Lazo. Subscribe: email, RSS or Twitter."
-MKT,business,"Marketing 557 reports with 3,848 papers, edited by João Carlos Correia Leitão. Subscribe: email, RSS or Twitter."
-ORE,business,"Operations Research 435 reports with 2,335 papers, edited by Walter Frisch. Subscribe: email, RSS or Twitter."
-PPM,business,"Project, Program & Portfolio Management 495 reports with 2,755 papers, edited by Arvi Kuura. Subscribe: email, RSS or Twitter."
-RMG,business,"Risk Management 674 reports with 6,657 papers, edited by Stan Miles. Subscribe: email, RSS or Twitter."
-SBM,business,"Small Business Management 358 reports with 3,844 papers, edited by João Carlos Correia Leitão. Subscribe: email, RSS or Twitter."
-CUL,culture,"Cultural Economics 566 reports with 1,948 papers, edited by Roberto Zanola. Subscribe: email, RSS or Twitter."
-EDU,culture,"Education 688 reports with 9,187 papers, edited by João Carlos Correia Leitão. Subscribe: email, RSS or Twitter."
-AGE,demo,"Economics of Ageing 462 reports with 4,350 papers, edited by Claudia Villosio. Subscribe: email, RSS or Twitter."
-DEM,demo,"Demographic Economics 240 reports with 3,815 papers, edited by Michele Battisti. Subscribe: email, RSS or Twitter."
-HEA,demo,"Health Economics 816 reports with 9,563 papers, edited by Yong Yin. Subscribe: email, RSS or Twitter."
-CFN,finance,"Corporate Finance 721 reports with 4,395 papers, edited by Zelia Serrasqueiro. Subscribe: email, RSS or Twitter."
-FDG,finance,"Financial Development & Growth 540 reports with 3,685 papers, edited by Iulia Igescu. Subscribe: email, RSS or Twitter."
-FIN,finance,"Finance 307 reports with 5,579 papers, edited by vacant. This report is closed"
-FMK,finance,"Financial Markets 753 reports with 7,710 papers, edited by Kwang Soo Cheong. Subscribe: email, RSS or Twitter."
-IFN,finance,"International Finance 803 reports with 6,995 papers, edited by Vimal Balasubramaniam. Subscribe: email, RSS or Twitter."
-PAY,finance,"Payment Systems & Financial Technology 20 reports with 192 papers, edited by Bernardo Bátiz-Lazo. Subscribe: email, RSS or Twitter."
-CBE,heterodox,"Cognitive & Behavioural Economics 684 reports with 6,597 papers, edited by Marco Novarese. Subscribe: email, RSS or Twitter."
-EVO,heterodox,"Evolutionary Economics 694 reports with 4,071 papers, edited by Matthew Baker. Subscribe: email, RSS or Twitter."
-EXP,heterodox,"Experimental Economics 729 reports with 8,632 papers, edited by Daniel Houser. Subscribe: email, RSS or Twitter."
-HME,heterodox,"Heterodox Microeconomics 277 reports with 4,167 papers, edited by Carlo D’Ippoliti. Subscribe: email, RSS or Twitter."
-NEU,heterodox,"Neuroeconomics 422 reports with 1,428 papers, edited by Daniel Houser. Subscribe: email, RSS or Twitter."
-PKE,heterodox,"Post Keynesian Economics 728 reports with 5,245 papers, edited by Karl Petrick. Subscribe: email, RSS or Twitter."
-COM,industry,"Industrial Competition 671 reports with 10,360 papers, edited by Russell Pittman. Subscribe: email, RSS or Twitter."
-IND,industry,"Industrial Organization 710 reports with 3,999 papers, edited by Kwang Soo Cheong. Subscribe: email, RSS or Twitter."
-INO,industry,"Innovation 707 reports with 10,231 papers, edited by Uwe Cantner. Subscribe: email, RSS or Twitter."
-IPR,industry,"Intellectual Property Rights 493 reports with 3,611 papers, edited by Giovanni Ramello. Subscribe: email, RSS or Twitter."
-KNM,industry,"Knowledge Management & Knowledge Economy 503 reports with 3,891 papers, edited by Laura ?tef?nescu. Subscribe: email, RSS or Twitter."
-TID,industry,"Technology & Industrial Dynamics 707 reports with 3,616 papers, edited by Fulvio Castellacci. Subscribe: email, RSS or Twitter."
-LAB,labour,"Labour Economics 794 reports with 22,331 papers, edited by Joseph Marchand. Subscribe: email, RSS or Twitter."
-LMA,labour,"Labor Markets - Supply, Demand, & Wages 257 reports with 3,438 papers, edited by Joseph Marchand. Subscribe: email, RSS or Twitter."
-LTV,labour,"Unemployment, Inequality & Poverty 714 reports with 5,070 papers, edited by Maximo Rossi. Subscribe: email, RSS or Twitter."
-DEV,macroeconomics,"Development 821 reports with 13,533 papers, edited by Jacob A. Jordaan. Subscribe: email, RSS or Twitter."
-DGE,macroeconomics,"Dynamic General Equilibrium 836 reports with 11,725 papers, edited by Christian Zimmermann. Subscribe: email, RSS or Twitter."
-GRO,macroeconomics,"Economic Growth 130 reports with 2,065 papers, edited by Marc Klemp. Subscribe: email, RSS or Twitter."
-INT,macroeconomics,"International Trade 554 reports with 10,656 papers, edited by Luca Salvatici. Subscribe: email, RSS or Twitter."
-MAC,macroeconomics,"Macroeconomics 672 reports with 35,019 papers, edited by Soumitra K Mallick. Subscribe: email, RSS or Twitter."
-OPM,macroeconomics,"Open Economy Macroeconomics 423 reports with 4,433 papers, edited by Martin Berka. Subscribe: email, RSS or Twitter."
-TRA,macroeconomics,"Transition Economics 680 reports with 10,922 papers, edited by J. David Brown. Subscribe: email, RSS or Twitter."
-CTA,microeconomics,"Contract Theory & Applications 418 reports with 4,470 papers, edited by Guillem Roig. Subscribe: email, RSS or Twitter."
-GTH,microeconomics,"Game Theory 683 reports with 7,210 papers, edited by László Á. Kóczy. Subscribe: email, RSS or Twitter."
-MIC,microeconomics,"Microeconomics 779 reports with 10,078 papers, edited by Jing-Yuan Chiou. Subscribe: email, RSS or Twitter."
-MST,microeconomics,"Market Microstructure 517 reports with 1,987 papers, edited by Thanos Verousis. Subscribe: email, RSS or Twitter."
-UPT,microeconomics,"Utility Models & Prospect Theory 544 reports with 5,120 papers, edited by Alexander Harin. Subscribe: email, RSS or Twitter."
-EFF,microeconomics,"Efficiency & Productivity 621 reports with 7,948 papers, edited by Angelo Zago. Subscribe: email, RSS or Twitter."
-GEO,other,"Economic Geography 678 reports with 10,091 papers, edited by Andreas Koch. Subscribe: email, RSS or Twitter."
-HAP,other,"Economics of Happiness 458 reports with 2,632 papers, edited by Viviana Di Giovinazzo. Subscribe: email, RSS or Twitter."
-HPE,other,"History & Philosophy of Economics 726 reports with 7,479 papers, edited by Erik Thomson. Subscribe: email, RSS or Twitter."
-HRM,microeconomics,"Human Capital & Human Resource Management 528 reports with 6,235 papers, edited by Patrick Kampkötter. Subscribe: email, RSS or Twitter."
-IAS,microeconomics,"Insurance Economics 732 reports with 4,669 papers, edited by Soumitra K. Mallick. Subscribe: email, RSS or Twitter."
-ICT,microeconomics,"Information & Communication Technologies 558 reports with 2,048 papers, edited by Walter Frisch. Subscribe: email, RSS or Twitter."
-IUE,other,"Informal & Underground Economics 254 reports with 1,733 papers, edited by Catalina Granda Carvajal. Subscribe: email, RSS or Twitter."
-LAW,other,"Law & Economics 772 reports with 4,605 papers, edited by Eve-Angeline Lambert. Subscribe: email, RSS or Twitter."
-MFD,other,"Microfinance 609 reports with 2,977 papers, edited by Olivier Dagnelie. Subscribe: email, RSS or Twitter."
-MIG,other,"Economics of Human Migration 470 reports with 5,423 papers, edited by Yuji Tamura. Subscribe: email, RSS or Twitter."
-NET,microeconomics,"Network Economics 676 reports with 4,286 papers, edited by Yi-Nung Yang. Subscribe: email, RSS or Twitter."
-POL,other,"Positive Political Economics 767 reports with 7,121 papers, edited by Eugene Beaulieu. Subscribe: email, RSS or Twitter."
-SOC,microeconomics,"Social Norms & Social Capital 552 reports with 6,212 papers, edited by Fabio Sabatini. Subscribe: email, RSS or Twitter."
-SOG,other,"Sociology of Economics 499 reports with 1,783 papers, edited by Jonas Holmström. Subscribe: email, RSS or Twitter."
-SPO,other,"Sports & Economics 497 reports with 1,373 papers, edited by João Carlos Correia Leitão. Subscribe: email, RSS or Twitter."
-TRE,other,"Transport Economics 234 reports with 2,334 papers, edited by Erik Teodoor Verhoef. Subscribe: email, RSS or Twitter."
-TUR,other,"Tourism Economics 472 reports with 1,794 papers, edited by Laura Vici. Subscribe: email, RSS or Twitter."
-URE,other,"Urban & Real Estate Economics 695 reports with 18,375 papers, edited by Steve Ross. Subscribe: email, RSS or Twitter."
-CDM,public,"Collective Decision-Making 790 reports with 6,323 papers, edited by Stan C. Weeber. Subscribe: email, RSS or Twitter."
-NPS,public,"Nonprofit & Public Sector 25 reports with 175 papers, edited by vacant. Subscribe: email, RSS or Twitter."
-PBE,public,"Public Economics 826 reports with 12,212 papers, edited by Thomas Andrén. Subscribe: email, RSS or Twitter."
-PUB,public,"Public Finance 764 reports with 4,560 papers, edited by Kwang Soo Cheong. Subscribe: email, RSS or Twitter."
-REG,public,"Regulation 647 reports with 6,593 papers, edited by Natalia Fabra. Subscribe: email, RSS or Twitter."
-CMP,quantitative,"Computational Economics 738 reports with 5,388 papers, edited by Stan Miles. Subscribe: email, RSS or Twitter."
-DCM,quantitative,"Discrete Choice Models 736 reports with 3,576 papers, edited by Edoardo Marcucci. Subscribe: email, RSS or Twitter."
-ECM,quantitative,"Econometrics 833 reports with 11,348 papers, edited by Sune Karlsson. Subscribe: email, RSS or Twitter."
-ETS,quantitative,"Econometric Time Series 835 reports with 5,931 papers, edited by Yong Yin. Subscribe: email, RSS or Twitter."
-FOR,quantitative,"Forecasting 557 reports with 4,839 papers, edited by Rob J Hyndman. Subscribe: email, RSS or Twitter."
-AFR,regional,"Africa 612 reports with 7,688 papers, edited by Sam Sarpong. Subscribe: email, RSS or Twitter."
-ARA,regional,"MENA - Middle East & North Africa 382 reports with 3,409 papers, edited by Paul Makdissi. Subscribe: email, RSS or Twitter."
-CIS,regional,"Confederation of Independent States 478 reports with 3,698 papers, edited by Alexander Harin. Subscribe: email, RSS or Twitter."
-CNA,regional,"China 433 reports with 2,325 papers, edited by Zheng Fang. Subscribe: email, RSS or Twitter."
-CWA,regional,"Central & Western Asia 595 reports with 6,973 papers, edited by Sultan Orazbayev. Subscribe: email, RSS or Twitter."
-EEC,regional,"European Economics 768 reports with 10,680 papers, edited by Giuseppe Marotta. Subscribe: email, RSS or Twitter."
-EUR,regional,"Microeconomic European Issues 332 reports with 6,056 papers, edited by Giuseppe Marotta. Subscribe: email, RSS or Twitter."
-GER,regional,"German Papers 355 reports with 5,104 papers, edited by Roberto Cruccolini. Subscribe: email, RSS or Twitter."
-LAM,regional,"Central & South America 575 reports with 3,449 papers, edited by Maximo Rossi. Subscribe: email, RSS or Twitter."
-SEA,regional,"South East Asia 651 reports with 8,952 papers, edited by Kavita Iyengar. Subscribe: email, RSS or Twitter."
-AGR,resources,"Agricultural Economics 651 reports with 15,707 papers, edited by Angelo Zago. Subscribe: email, RSS or Twitter."
-ENE,resources,"Energy Economics 697 reports with 14,101 papers, edited by Roger Fouquet. Subscribe: email, RSS or Twitter."
-ENV,resources,"Environmental Economics 702 reports with 16,288 papers, edited by Francisco S. Ramos. Subscribe: email, RSS or Twitter."
-RES,resources,"Resource Economics 407 reports with 1,944 papers, edited by Maximo Rossi. Subscribe: email, RSS or Twitter."
+field,description,group,groups_szignago
+ALL,All new papers ,all,all
+BAN,Banking ,bank,bank
+CBA,Central Banking ,bank,bank
+MON,Monetary Economics ,bank,bank
+ACC,Accounting & Auditing ,business,business
+BEC,Business Economics ,business,business
+CSE,Economics of Strategic Management ,business,business
+ENT,Entrepreneurship ,business,business
+HIS,"Business, Economic & Financial History ",business,business
+MKT,Marketing ,business,business
+ORE,Operations Research ,business,business
+PPM,"Project, Program & Portfolio Management ",business,business
+RMG,Risk Management ,business,business
+SBM,Small Business Management ,business,business
+CUL,Cultural Economics ,culture,other
+EDU,Education ,culture,other
+AGE,Economics of Ageing ,demo,demo
+DEM,Demographic Economics ,demo,demo
+HEA,Health Economics ,demo,demo
+CFN,Corporate Finance ,finance,finance
+FDG,Financial Development & Growth ,finance,finance
+FIN,Finance ,finance,finance
+FMK,Financial Markets ,finance,finance
+IFN,International Finance ,finance,finance
+PAY,Payment Systems & Financial Technology ,finance,finance
+CBE,Cognitive & Behavioural Economics ,heterodox,heterodox
+EVO,Evolutionary Economics ,heterodox,heterodox
+EXP,Experimental Economics ,heterodox,heterodox
+HME,Heterodox Microeconomics ,heterodox,heterodox
+NEU,Neuroeconomics ,heterodox,heterodox
+PKE,Post Keynesian Economics ,heterodox,heterodox
+COM,Industrial Competition ,industry,industry
+IND,Industrial Organization ,industry,industry
+INO,Innovation ,industry,industry
+IPR,Intellectual Property Rights ,industry,industry
+KNM,Knowledge Management & Knowledge Economy ,industry,industry
+TID,Technology & Industrial Dynamics ,industry,industry
+LAB,Labour Economics ,labour,labour
+LMA,"Labor Markets - Supply, Demand, & Wages ",labour,labour
+LTV,"Unemployment, Inequality & Poverty ",labour,labour
+DEV,Development ,macroeconomics,trade&dev
+DGE,Dynamic General Equilibrium ,macroeconomics,macroeconomics
+GRO,Economic Growth ,macroeconomics,macroeconomics
+INT,International Trade ,macroeconomics,trade&dev
+MAC,Macroeconomics ,macroeconomics,macroeconomics
+OPM,Open Economy Macroeconomics ,macroeconomics,macroeconomics
+TRA,Transition Economics ,macroeconomics,regional
+CTA,Contract Theory & Applications ,microeconomics,microeconomics
+GTH,Game Theory ,microeconomics,microeconomics
+MIC,Microeconomics ,microeconomics,microeconomics
+MST,Market Microstructure ,microeconomics,microeconomics
+UPT,Utility Models & Prospect Theory ,microeconomics,microeconomics
+EFF,Efficiency & Productivity ,microeconomics,microeconomics
+GEO,Economic Geography ,other,other
+HAP,Economics of Happiness ,other,other
+HPE,History & Philosophy of Economics ,other,other
+HRM,Human Capital & Human Resource Management ,microeconomics,microeconomics
+IAS,Insurance Economics ,microeconomics,microeconomics
+ICT,Information & Communication Technologies ,microeconomics,microeconomics
+IUE,Informal & Underground Economics ,other,other
+LAW,Law & Economics ,other,other
+MFD,Microfinance ,other,finance
+MIG,Economics of Human Migration ,other,demo
+NET,Network Economics ,microeconomics,microeconomics
+POL,Positive Political Economics ,other,other
+SOC,Social Norms & Social Capital ,microeconomics,microeconomics
+SOG,Sociology of Economics ,other,other
+SPO,Sports & Economics ,other,other
+TRE,Transport Economics ,other,other
+TUR,Tourism Economics ,other,other
+URE,Urban & Real Estate Economics ,other,urban&RE
+CDM,Collective Decision-Making ,public,public
+NPS,Nonprofit & Public Sector ,public,public
+PBE,Public Economics ,public,public
+PUB,Public Finance ,public,public
+REG,Regulation ,public,public
+CMP,Computational Economics ,quantitative,quantitative
+DCM,Discrete Choice Models ,quantitative,quantitative
+ECM,Econometrics ,quantitative,quantitative
+ETS,Econometric Time Series ,quantitative,quantitative
+FOR,Forecasting ,quantitative,quantitative
+AFR,Africa ,regional,regional
+ARA,MENA - Middle East & North Africa ,regional,regional
+CIS,Confederation of Independent States ,regional,regional
+CNA,China ,regional,regional
+CWA,Central & Western Asia ,regional,regional
+EEC,European Economics ,regional,regional
+EUR,Microeconomic European Issues ,regional,regional
+GER,German Papers ,regional,regional
+LAM,Central & South America ,regional,regional
+SEA,South East Asia ,regional,regional
+AGR,Agricultural Economics ,resources,resources
+ENE,Energy Economics ,resources,resources
+ENV,Environmental Economics ,resources,resources
+RES,Resource Economics ,resources,resources
