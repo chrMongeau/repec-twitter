@@ -100,7 +100,7 @@ Finally, some tweaks were done for a better visualization.
 
 ### Where is the data?
 
-Initially I though about sharing the data from Twitter and RePEC, but I
+Initially I thought about sharing the data from Twitter and RePEC, but I
 reconsidered this idea because I don't feel confortable in sharing personal
 information (even if it is publicily available!). You'll need to use the
 script to download the data. It will require some time, as Twitter has some
