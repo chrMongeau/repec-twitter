@@ -324,6 +324,9 @@ for ( i in 1:N ) {
 	Sys.sleep(2) # be nice
 }
 
+# Backup
+users_orig <- users
+
 users$name_nick <- paste0(users$name, ' (@', users$nick, ')')
 
 users_fields <-
@@ -364,8 +367,6 @@ NEP_alt <- read.csv('NEP.csv', stringsAsFactors=FALSE)
 users$field2 <- NEP_alt$group[match(users$field, NEP_alt$field)]
 
 
-# Backup
-users_orig <- users
 
 # If user changed its username, it won't be matched. Sorry.
 no_match <- members$nicks[! tolower(members$nicks) %in% tolower(users$nick)]
