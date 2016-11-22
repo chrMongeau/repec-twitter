@@ -327,6 +327,9 @@ for ( i in 1:N ) {
 # Backup
 users_orig <- users
 
+# Remove users with no Twitter info
+users <- users[!(tolower(users$nick) %in% tolower(members$nick[is.na(members$followers)])),]
+
 users$name_nick <- paste0(users$name, ' (@', users$nick, ')')
 
 users_fields <-
