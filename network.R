@@ -405,7 +405,7 @@ simNEP[is.na(simNEP)] <- 0
 adj_sim <- adj * simNEP
 
 # Remove isolates
-x <- apply(adj_sim, 1, sum) != 0 | apply(adj_sim, 2, sum) != 0
+x <- apply(adj_sim, 1, sum, na.rm=TRUE) != 0 | apply(adj_sim, 2, sum, na.rm=TRUE) != 0
 adj_sim <- adj_sim[x, x]
 
 users <- users[x,]
@@ -423,6 +423,7 @@ net <-
 	set_vertex_attr('software', value = users$software) %>%
 	set_vertex_attr('field_name', value = users$field_name) %>%
 	set_vertex_attr('centrality', value = page.rank(.)$vector) %>%
+	set_vertex_attr('centrality_rank', value = rank(page.rank(.)$vector)) %>%
 	set_vertex_attr('pic', value = members$pic[match(tolower(users$nick),
 													 tolower(members$nicks))])
 
@@ -437,7 +438,7 @@ for ( i in 0:(nrow(adj_sim)-1) ) {
 		a <- gsub(paste0('\\bn', i, '\\b'), users$name_nick[i+1], a)
 }
 
-cat(a, file='network.graphml', sep='\n')
+cat(a, file=to_gephi, sep='\n')
 
 
 # https://twitter.com/intent/user?user_id=2320913786
