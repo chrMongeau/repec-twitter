@@ -434,11 +434,11 @@ net <-
 													 tolower(members$nicks))])
 
 
-write_graph(net, 'network.graphml', format='graphml')
+write_graph(net, to_gephi, format='graphml')
 
 
 # Hack: change generic node id (e.g., n11) name to username_nick
-a <- readLines('network.graphml')
+a <- readLines(to_gephi)
 
 for ( i in 0:(nrow(adj_sim)-1) ) {
 		a <- gsub(paste0('\\bn', i, '\\b'), users$name_nick[i+1], a)
