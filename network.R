@@ -148,6 +148,8 @@ for ( i in 1:N ) {
 members$perday <- round(members$statuses /
 	((epoch(Sys.time()) - epoch(as.Date(members$joined, format='%a %b %d %H:%M:%S %z %Y')))/(60*60*24)))
 
+members_orig <- members
+
 ##### INFO from IDEAS
 
 NEP_fields <-
