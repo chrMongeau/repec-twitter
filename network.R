@@ -58,7 +58,7 @@ members_raw <-
 
 members <- data.frame(
 			nicks=sapply(content(members_raw)$users, '[[', 'screen_name'),
-			ids=as.character(sapply(content(members_raw)$users, '[[', 'id')),
+			ids=sapply(content(members_raw)$users, '[[', 'id_str'),
 			location=NA,
 			protected=NA,
 			followers=NA,
@@ -85,7 +85,7 @@ for ( i in 1:N ) {
 
 	friends_ids <-
 		paste0(api, 'friends/ids.json?', 'cursor=', cursor,
-		   '&user_id=', fuser, '&count=5000') %>%
+		   '&user_id=', fuser, '&count=5000&stringify_ids=true') %>%
 		GET_content
 
 	# Won't test for errors
@@ -105,7 +105,7 @@ for ( i in 1:N ) {
 
 				friends_ids <-
 					paste0(api, 'friends/ids.json?', 'cursor=', cursor,
-					   '&user_id=', fuser, '&count=5000') %>%
+					   '&user_id=', fuser, '&count=5000&stringify_ids=true') %>%
 					GET_content
 			}
 		} else {
