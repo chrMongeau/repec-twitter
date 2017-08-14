@@ -189,7 +189,8 @@ affiliation_from_page <- function(pag) {
 		instit <- data.frame(V1=100, V2=instit)
 	} else {
 		instit %<>%
-		strsplit(') ') %>%
+		sub('%)', '%#)', .) %>%
+		strsplit('#) ') %>%
 		asDataFrame
 
 		# If no percentage is reported
