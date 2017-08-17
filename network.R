@@ -371,7 +371,8 @@ users$field1 <-
 
 NEP_alt <- read.csv('NEP.csv', stringsAsFactors=FALSE)
 
-users$field1_desc <- NEP_alt$group[match(users$field, NEP_alt$field)]
+users$field1_group1 <- NEP_alt$group[match(users$field, NEP_alt$field)]
+users$field1_group2 <- NEP_alt$groups_szignago[match(users$field, NEP_alt$field)]
 
 
 
@@ -425,7 +426,8 @@ net <-
 	set_vertex_attr('link', value = users$link) %>%
 	set_vertex_attr('field', value = users$field) %>%
 	#set_vertex_attr('field1', value = users$field1) %>%
-	set_vertex_attr('field1_desc', value = users$field1_desc) %>%
+	set_vertex_attr('field1_group1', value = users$field1_group1) %>%
+	set_vertex_attr('field1_group2', value = users$field1_group2) %>%
 	set_vertex_attr('papers', value = users$papers) %>%
 	set_vertex_attr('articles', value = users$articles) %>%
 	set_vertex_attr('software', value = users$software) %>%
