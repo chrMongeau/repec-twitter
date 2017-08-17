@@ -186,7 +186,7 @@ affiliation_from_page <- function(pag) {
 	if ( length(instit) == 0 ) {
 		return(data.frame(instit=NA, location=NA, percent=NA, n=NA))
 	} else if ( length(instit) == 1 ) {
-		instit <- data.frame(V1=100, V2=instit)
+		instit <- data.frame(V1 = 100, V2 = instit, stringsAsFactors = FALSE)
 	} else {
 		instit %<>%
 		sub('%)', '%#)', .) %>%
@@ -209,8 +209,9 @@ affiliation_from_page <- function(pag) {
 		xml_find_all('//span[@class="locationlabel"]/text()') %>%
 		trimws
 
-	return(data.frame(instit=instit$V2[1], location=locat[1],
-					  percent=instit$V1[1], n=length(instit$V1)))
+	return(data.frame(instit = instit$V2[1], location = locat[1],
+					  percent = instit$V1[1], n = length(instit$V1),
+					  stringsAsFactors = FALSE))
 }
 
 fields_from_page <- function(pag) {
@@ -324,7 +325,7 @@ for ( i in 1:N ) {
 	users$papers[i] <- pubs_from_page(pag, type='papers')
 	users$software[i] <- pubs_from_page(pag, type='software')
 
-	Sys.sleep(2) # be nice
+	Sys.sleep(0.2) # be nice
 }
 
 # Backup
