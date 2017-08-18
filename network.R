@@ -145,8 +145,12 @@ for ( i in 1:N ) {
 	}
 }
 
-members$perday <- round(members$statuses /
-	((epoch(Sys.time()) - epoch(as.Date(members$joined, format='%a %b %d %H:%M:%S %z %Y')))/(60*60*24)))
+members <- members %>%
+	mutate(
+		time_on_twitter = (epoch(Sys.time()) - epoch(as.Date(members$joined, format='%a %b %d %H:%M:%S %z %Y')))/(60*60*24),
+		tweets_perday = round(statuses / time_on_twitter),
+		followers_perday = round(followers / time_on_twitter)
+	)
 
 members_orig <- members
 
