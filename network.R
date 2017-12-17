@@ -424,6 +424,17 @@ adj_sim <- adj_sim[x, x]
 users <- users[x,]
 users_fields <- users_fields[x,]
 
+# Gender
+members_raw_female <-
+	paste0(api, 'lists/members.json',
+		'?slug=repec-women&owner_screen_name=SZignago',
+		'&count=5000&skip_status=1') %>%
+	GET(config(token = twitter_token))
+
+female_nicks <- sapply(content(members_raw_female)$users, '[[', 'screen_name')
+
+users$gender <- ifelse(tolower(users$nick) %in% tolower(female_nicks), 'female', 'male')
+
 net <-
 	adj_sim %>%
 	graph_from_adjacency_matrix(mode='directed', weighted=TRUE) %>%
@@ -436,6 +447,7 @@ net <-
 	set_vertex_attr('articles', value = users$articles) %>%
 	set_vertex_attr('software', value = users$software) %>%
 	set_vertex_attr('field_name', value = users$field_name) %>%
+	set_vertex_attr('gender', value = users$gender) %>%
 	set_vertex_attr('centrality', value = page.rank(.)$vector) %>%
 	set_vertex_attr('centrality_rank', value = rank(page.rank(.)$vector)) %>%
 	set_vertex_attr('pic', value = members$pic[match(tolower(users$nick),
