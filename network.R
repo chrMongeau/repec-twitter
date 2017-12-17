@@ -145,6 +145,9 @@ for ( i in 1:N ) {
 	}
 }
 
+# Backup
+adj_orig <- adj
+
 members <- members %>%
 	mutate(
 		time_on_twitter = (epoch(Sys.time()) - epoch(as.Date(members$joined, format='%a %b %d %H:%M:%S %z %Y')))/(60*60*24),
@@ -313,7 +316,7 @@ users <- data.frame(nick='',
 					stringsAsFactors=FALSE)
 
 N <- nrow(users)
-for ( i in 1:N ) {
+for ( i in 660:N ) {
 	print(paste(i, N, sep='/')) ; flush.console()
 
 	pag <- read_html(link2users[i])
@@ -332,14 +335,16 @@ for ( i in 1:N ) {
 	users$papers[i] <- pubs_from_page(pag, type='papers')
 	users$software[i] <- pubs_from_page(pag, type='software')
 
-	Sys.sleep(0.2) # be nice
+	Sys.sleep(2) # be nice
 }
 
 # Backup
 users_orig <- users
 
 # Remove users with no Twitter info
-users <- users[!(tolower(users$nick) %in% tolower(members$nick[is.na(members$followers)])),]
+if (sum(is.na(members$followers)) > 0) {
+	users <- users[!(tolower(users$nick) %in% tolower(members$nick[is.na(members$followers)])),]
+}
 
 users$name_nick <- paste0(users$name, ' (@', users$nick, ')')
 
@@ -394,9 +399,6 @@ matched <- match(tolower(members$nicks), tolower(users$nick))
 
 users <- users[matched,]
 users_fields <- users_fields[matched,]
-
-# Backup
-adj_orig <- adj
 
 adj <- adj[colnames(adj) %in% members$ids, colnames(adj) %in% members$ids]
 
