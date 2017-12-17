@@ -227,6 +227,9 @@ fields_from_page <- function(pag) {
 		strsplit('\\(') %>%
 		asDataFrame
 
+	# At some point this became necessary
+	fields[,2] <- sub(').*', '', fields[,2])
+
 	if ( nrow(fields) == 0 | ncol(fields) < 2 ) {
 		return(list(fields=paste(rep(NA, nrow(NEP_fields)), collapse='#'), n=0))
 	} else {
