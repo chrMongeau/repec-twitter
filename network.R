@@ -316,7 +316,7 @@ users <- data.frame(nick='',
 					stringsAsFactors=FALSE)
 
 N <- nrow(users)
-for ( i in 660:N ) {
+for ( i in 1:N ) {
 	print(paste(i, N, sep='/')) ; flush.console()
 
 	pag <- read_html(link2users[i])
