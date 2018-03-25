@@ -9,6 +9,7 @@ library('igraph')
 library('dplyr')
 library('magrittr')
 library('proxy')
+library('repec') # https://github.com/chrMongeau/repec
 
 source('keys.txt')
 
@@ -181,6 +182,7 @@ pubs_from_page <- function(pag, type=NA) {
 	return(pubs)
 }
 
+# After IDEAS redesign, this doesn't work: see affiliation_from_api()
 # TODO: add EDIRC Handle
 affiliation_from_page <- function(pag) {
 	instit <-
@@ -221,6 +223,26 @@ affiliation_from_page <- function(pag) {
 					  stringsAsFactors = FALSE))
 }
 
+affiliation_from_api <- function(record) {
+	instit <- record$affiliation[[1]]
+
+	if ( nrow(instit) == 0 ) {
+		return(data.frame(instit=NA, location=NA, percent=NA, n=NA))
+	} else if ( nrow(instit) == 1 ) {
+		instit <- data.frame(V1 = 100, V2 = instit$name, stringsAsFactors = FALSE)
+	} else {
+		instit <- data.frame(V1=as.numeric(instit$share), V2=instit$name, stringsAsFactors = FALSE)
+	}
+
+	# XXX non location information in API
+	locat <- NA
+
+	return(data.frame(instit = instit$V2[1], location = locat[1],
+					  percent = instit$V1[1], n = length(instit$V1),
+					  stringsAsFactors = FALSE))
+}
+
+# After IDEAS redesign, this doesn't work: see fields_from_api()
 fields_from_page <- function(pag) {
 	fields <-
 		pag %>%
@@ -261,6 +283,30 @@ fields_from_page <- function(pag) {
 	}
 }
 
+fields_from_api <- function(usr) {
+	author_id <- sub('^.*\\/([^.]+)\\.html$', '\\1', usr)
+
+	fields <- getauthornep(author_id, code = repec_api_key)
+
+	if ( nrow(fields) == 0 || ncol(fields) < 2 ) {
+		return(list(fields=paste(rep(NA, nrow(NEP_fields)), collapse='#'), n=0))
+	} else {
+
+		fields <- fields %>%
+			mutate(field = sub('NEP-', '', toupper(field))) %>%
+			select(field, papers)
+
+		jfields <- left_join(NEP_fields, fields, by='field')$papers
+
+		nfields <- sum(!is.na(jfields))
+
+		fields_str <- paste(jfields, collapse='#')
+		fields_str <- gsub('NA', 0, fields_str)
+
+		return(list(fields=fields_str, n=nfields))
+	}
+}
+
 name_from_page <- function(pag) {
 	name <-
 		pag %>%
@@ -275,7 +321,7 @@ name_from_page <- function(pag) {
 nick_from_page <- function(pag) {
 	nick <-
 		pag %>%
-		xml_find_all('//a[@class="twitter-follow-button"]') %>%
+		xml_find_all('//a[contains(@href,"twitter.com")]') %>%
 		xml_attr('href') %>%
 		sub('.*twitter.com/', '', .)
 
@@ -326,14 +372,21 @@ for ( i in 1:N ) {
 	users$name[i] <- name_from_page(pag)
 
 	users[i, c('fields', 'nfields')] <-
-		fields_from_page(pag)[c('fields', 'n')]
+		fields_from_api(link2users[i])[c('fields', 'n')]
+
+	usr <- sub('^.*\\/([^.]+)\\.html$', '\\1', link2users[i])
+	repec_record_raw <- getauthorrecordraw(usr, code = repec_api_key)
 
 	users[i, c('affil_inst', 'affil_loc', 'affil_perc', 'affil_n')] <-
-		affiliation_from_page(pag)[c('instit', 'location', 'percent', 'n')]
+		affiliation_from_api(repec_record_raw)[c('instit', 'location', 'percent', 'n')]
 
-	users$articles[i] <- pubs_from_page(pag, type='articles')
-	users$papers[i] <- pubs_from_page(pag, type='papers')
-	users$software[i] <- pubs_from_page(pag, type='software')
+	#users$articles[i] <- pubs_from_page(pag, type='articles')
+	#users$papers[i]   <- pubs_from_page(pag, type='papers')
+	#users$software[i] <- pubs_from_page(pag, type='software')
+
+	users$articles[i] <- ifelse(is.null(repec_record_raw$article[[1]]), 0, nrow(repec_record_raw$article[[1]]))
+	users$papers[i]   <- ifelse(is.null(repec_record_raw$paper[[1]]), 0, nrow(repec_record_raw$paper[[1]]))
+	users$software[i] <- ifelse(is.null(repec_record_raw$software[[1]]), 0, nrow(repec_record_raw$software[[1]]))
 
 	Sys.sleep(2) # be nice
 }
