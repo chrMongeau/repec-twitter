@@ -33,7 +33,7 @@ nicks_from_page <- function(u) {
 		stop('############ NO INTERNET ##############')
 	} else {
 		html_page %>%
-			xml_find_all('//a[@class="twitter-follow-button"]') %>%
+			xml_find_all('//a[contains(@href,"twitter.com")]') %>%
 			xml_attr('href') %>%
 			sub('.*twitter.com/', '', .)
 	}
