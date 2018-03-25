@@ -166,7 +166,8 @@ NEP_fields <-
 	xml_find_all('//ul/li/b') %>%
 	sub('<b><a href="nep-.../">NEP-(...)</a> *([^<]+) *</b>', '\\1|\\2', .) %>%
 	strsplit('\\|') %>%
-	asDataFrame
+	asDataFrame %>%
+	filter(V1 != 'ALL')
 
 rownames(NEP_fields) <- NULL
 colnames(NEP_fields) <- c('field', 'name')
@@ -461,9 +462,6 @@ rownames(adj) <- colnames(adj) <- users$name_nick
 ## Weighted by % of people followed:
 #adj <- adj/apply(adj, 1, sum)
 #adj[is.nan(adj)] <- 0
-
-# Remove NEP field "ALL"
-users_fields %<>% subset(select=-ALL)
 
 # Weighted by similarity of NEP fields
 simNEP <-
