@@ -227,9 +227,9 @@ affiliation_from_page <- function(pag) {
 affiliation_from_api <- function(record) {
 	instit <- record$affiliation[[1]]
 
-	if ( nrow(instit) == 0 ) {
+	if ( length(instit) == 0 ) {
 		return(data.frame(instit=NA, location=NA, percent=NA, n=NA))
-	} else if ( nrow(instit) == 1 ) {
+	} else if ( length(instit) == 1 ) {
 		instit <- data.frame(V1 = 100, V2 = instit$name, stringsAsFactors = FALSE)
 	} else {
 		instit <- data.frame(V1=as.numeric(instit$share), V2=instit$name, stringsAsFactors = FALSE)
@@ -289,7 +289,7 @@ fields_from_api <- function(usr) {
 
 	fields <- getauthornep(author_id, code = repec_api_key)
 
-	if ( nrow(fields) == 0 || ncol(fields) < 2 ) {
+	if ( length(fields) == 0 ) {
 		return(list(fields=paste(rep(NA, nrow(NEP_fields)), collapse='#'), n=0))
 	} else {
 
@@ -469,7 +469,8 @@ simNEP <-
 	simil(method='cosine') %>%
 	as.matrix(diag=0)
 
-simNEP[is.na(simNEP)] <- 0
+# 10% the smallest value (in order to keep people without NEP fields)
+simNEP[is.na(simNEP)] <- unique(sort(simNEP))[[2]] * 0.1
 
 adj_sim <- adj * simNEP
 
