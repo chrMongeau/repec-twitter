@@ -228,15 +228,37 @@ affiliation_from_api <- function(record) {
 	instit <- record$affiliation[[1]]
 
 	if ( length(instit) == 0 ) {
-		return(data.frame(instit=NA, location=NA, percent=NA, n=NA))
-	} else if ( length(instit) == 1 ) {
-		instit <- data.frame(V1 = 100, V2 = instit$name, stringsAsFactors = FALSE)
-	} else {
-		instit <- data.frame(V1=as.numeric(instit$share), V2=instit$name, stringsAsFactors = FALSE)
-	}
 
-	# XXX non location information in API
-	locat <- NA
+		return(data.frame(instit=NA, location=NA, percent=NA, n=NA))
+
+	} else {
+		# XXX no location information in API
+		x <- strsplit(instit$handle[1], split=':')[[1]][3]
+
+		x1 <- read_html(paste0('https://edirc.repec.org/data/', x, '.html')) %>%
+			xml_find_all('//div[@id="details"]') %>%
+			xml_text() %>%
+			strsplit(., split='\\n') %>%
+			getElement(1) %>%
+			tbl_df() %>%
+			filter(grepl('Location', value)) %>%
+			pull(value) %>%
+			sub('Location:  *', '', .)
+
+		x2 <- read_html(paste0('https://edirc.repec.org/data/', x, '.html')) %>%
+			xml_find_all('//div[@id="details"]/a[starts-with(@href,"/") and @href != "/handle.html"]/@href') %>%
+			xml_text() %>%
+			sub('^\\/(.*)\\.html$', '\\1', .)
+
+		locat <- paste(x1, x2, sep ='|')
+
+		if ( length(instit) == 1 ) {
+			instit <- data.frame(V1 = 100, V2 = instit$name, stringsAsFactors = FALSE)
+		} else {
+			instit <- data.frame(V1=as.numeric(instit$share), V2=instit$name, stringsAsFactors = FALSE) %>%
+				arrange(desc(V1))
+		}
+	}
 
 	return(data.frame(instit = instit$V2[1], location = locat[1],
 					  percent = instit$V1[1], n = length(instit$V1),
