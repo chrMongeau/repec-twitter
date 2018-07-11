@@ -7,8 +7,8 @@ This repository has two (main) R scripts:
 
 All is [CC-BY-NC-SA](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-In order to use the Twitter API, you need to create an app. Follow the
-instructions at <http://rtweet.info/articles/auth.html>.
+In order to use the Twitter API, you need to create a "Twitter App". Follow
+the instructions at <http://rtweet.info/articles/auth.html>.
 
 ## list.R
 
