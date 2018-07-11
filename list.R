@@ -39,6 +39,12 @@ nicks_from_page <- function(u) {
 	}
 }
 
+nicks_from_api <- function(u) {
+	Sys.sleep(2) # be nice
+
+	getauthortwitter(sub('\\.html', '', basename(u)))
+}
+
 add_to_list <- function(user, slug = NA) {
 	paste0(root,
 		'members/create.json',
@@ -75,7 +81,8 @@ link2users <- 'https://ideas.repec.org/i/etwitter.html' %>%
 N <- length(link2users)
 repec_all <- vector(length=N)
 for ( i in 1:N ) {
-	nick <- nicks_from_page(link2users[i])
+	#nick <- nicks_from_page(link2users[i])
+	nick <- nicks_from_api(link2users[i])
 	repec_all[i] <- ifelse(length(nick) > 0, nick, NA)
 	print(paste(i, N, sep='/'))
 	flush.console()
@@ -118,11 +125,18 @@ if ( error == FALSE ) {
 		POST(config(token = twitter_token))
 	#content(update_list)
 
-	updates <- paste(length(to_add), "#RePEc #economists have joined",
-			"https://ideas.repec.org/i/etwitter.html from", last_update, 'to',
-			Sys.Date(), 'Now', new_count,
-			'in list: https://twitter.com/chrMongeau/lists/repec-twitter') %>%
-		url_escape
+	updates <- paste0(length(to_add), ' new #RePEc #economists added to ',
+			'https://twitter.com/chrMongeau/lists/repec-twitter (',
+			length(members), ' on ', last_update, '; ', new_count, ' now, ',
+			Sys.Date(), ").\n\nIf you haven't joined yet, ",
+			'follow the instructions at: ',
+			'https://ideas.repec.org/i/etwitter.html. CC: @repec_org') %>%
+		url_escape %>%
+	# @ = %40, ' = %27, ( = %28, ) = %29
+		gsub('@', '%40', .) %>%
+		gsub("'", '%27', .) %>%
+		gsub('\\(', '%28', .) %>%
+		gsub('\\)', '%29', .)
 
 	reply_update <-	paste0('https://api.twitter.com/1.1/statuses/update.json',
 			'?status=', updates,
