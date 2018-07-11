@@ -16,7 +16,7 @@ source('keys.txt')
 api <- 'https://api.twitter.com/1.1/'
 
 twitter_token <-
-	oauth_app('twitter', key = oauth['key'], secret = oauth['secret']) %>%
+	oauth_app('repec', key = oauth['key'], secret = oauth['secret']) %>%
 	oauth1.0_token(oauth_endpoints('twitter'), .)
 
 GET_content <- function(x) {
