@@ -42,7 +42,7 @@ nicks_from_page <- function(u) {
 nicks_from_api <- function(u) {
 	Sys.sleep(2) # be nice
 
-	getauthortwitter(sub('\\.html', '', basename(u)))
+	repec::getauthortwitter(sub('\\.html', '', basename(u)))
 }
 
 add_to_list <- function(user, slug = NA) {
