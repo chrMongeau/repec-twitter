@@ -5,6 +5,8 @@
 library('httr')
 library('xml2')
 library('magrittr')
+# rtweet
+# repec
 
 setwd('R:/')
 
@@ -18,10 +20,19 @@ source('keys.txt')
 
 error <- FALSE
 
-#### OAuth key and secret #####
+##### OAuth key and secret #####
+#twitter_token <-
+#	oauth_app('twitter', key = oauth[['key']], secret = oauth[['secret']]) %>%
+#	oauth1.0_token(oauth_endpoints('twitter'), .)
+
 twitter_token <-
-	oauth_app('twitter', key = oauth['key'], secret = oauth['secret']) %>%
-	oauth1.0_token(oauth_endpoints('twitter'), .)
+  rtweet::create_token(
+    app = "repec",
+    consumer_key = oauth[['key']],
+    consumer_secret = oauth[['secret']],
+    access_token = "XXX",
+    access_secret = "YYY"
+)
 
 nicks_from_page <- function(u) {
 	Sys.sleep(2) # be nice
